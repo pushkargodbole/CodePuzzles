@@ -23,7 +23,7 @@ struct btnode
 btnode* Bottomleft(btnode* node)
 {
 	if (node->Left == NULL) return node;
-	return node->Left;
+	return Bottomleft(node->Left);
 }
 
 btnode* Upright(btnode* node)
@@ -69,7 +69,7 @@ int main()
 	btnode* n11 = new btnode(11);
 	btnode* n10 = new btnode(10);
 	btnode* n2 = new btnode(2, n4, n5);
-	btnode* n3 = new btnode(3, n11, n10);
+	btnode* n3 = new btnode(3, n10, n11);
 	btnode* n1 = new btnode(1, n2, n3, NULL);
 	n2->Parent = n1;
 	n3->Parent = n1;
@@ -81,8 +81,6 @@ int main()
 	n7->Parent = n4;
 	n8->Parent = n5;
 	n9->Parent = n5;
-	int n = Btnext(n7);
+	int n = Btnext(n9);
 	cout << n << endl;
-	int k;
-	cin >> k;
 }
